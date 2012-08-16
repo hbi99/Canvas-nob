@@ -1,4 +1,3 @@
-
 // Written by Hakan Bilgin
 
 (function(window, document) {
@@ -29,16 +28,16 @@
                     event.stopPropagation();
                     return false;
                 case 'mousedown':
-                    _nob.el = event.target;
+                    _nob.el = event.target || event.srcElement;
                     _nob.clickY = event.clientY;
                     _nob.clickX = event.clientX;
-                    _nob.orgValue = _nob.el.dataset.value;
+                    _nob.orgValue = _nob.el.getAttribute('data-value');
                     bodyStyle.cursor = 'none';
                     event.preventDefault();
                     break;
                 case 'mousemove':
                     if (!_nob.el) return;
-                    _nob.el.dataset.value = (Math.min(Math.max(_nob.clickY-event.clientY + (_nob.orgValue - 50), -50), 50) + 50);
+                    _nob.el.setAttribute('data-value', (Math.min(Math.max(_nob.clickY-event.clientY + (_nob.orgValue - 50), -50), 50) + 50));
                     _nob.draw( _nob.el );
                     break;
                 case 'mouseup':
@@ -49,13 +48,12 @@
             }
         },
         draw: function(cvs, isInit) {
-            var dataset = cvs.dataset,
-                ctx  = cvs.getContext('2d'),
+            var ctx  = cvs.getContext('2d'),
                 d = cvs.width,
                 lw = d * 0.1,
                 r = d/2,
                 radius = r - lw,
-                val = dataset.value,
+                val = cvs.getAttribute('data-value'),
                 deg = (Math.min(Math.max(val/100, 0), 1) * 1.5) + 0.75,
                 startAngle = 0.745 * Math.PI,
                 midAngle = deg * Math.PI,
@@ -83,7 +81,7 @@
 
             // 
             if (isInit) return;
-            var onchange = dataset.change,
+            var onchange = cvs.getAttribute('data-change'),
                 parts, fn;
             if (onchange) {
                 if (cvs.fnStr !== onchange) {
