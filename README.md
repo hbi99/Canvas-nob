@@ -2,7 +2,7 @@ Canvas-nob
 ==========
 
 Nob like the ones in Ableton Live. The script and the nobs UI can be customized endlessly.
-This version is only the essence - allowing you to build and customize it your self.
+This version is only the essence - allowing you to build and customize it yourself.
 
 Here is a demo;
 [http://hbi99.github.com/Canvas-nob/](http://hbi99.github.com/Canvas-nob/)
