@@ -7,7 +7,7 @@ This version is only the essence - allowing you to build and customize it yourse
 Here is a demo;
 [http://hbi99.github.com/Canvas-nob/](http://hbi99.github.com/Canvas-nob/)
 
-Note - the script hasn't been tested with IE9.
+Note - the script has been tested with IE9.
 
 ---
 
